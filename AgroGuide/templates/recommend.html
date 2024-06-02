@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input Form</title>
+    <link rel="stylesheet" href="../static/recommend.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="#"><img src="../static/images/plant-pot-with-blurred-background_534373-1490.avif" alt="Plant Pot" height="50" > &nbsp;&nbsp;&nbsp; AgroGuide </a>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/yield_pred">Predict Yield</a></li>
+                <li><a href="/recommend">Crop Recommender</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="form-container">
+        <div class="form-content">
+            <h1>Find out the most suitable crop for your farm</h1>
+            <br>
+                {% if prediction %}
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none'">
+                        &times;
+                    </span> 
+                    <h1 class="text-center"> Soil is suitable for growing <br>{{prediction}}</h1>
+                </div>
+            {% endif %}
+         <br>
+            <form action="/recommend_crop" method="post">
+                <label for="nitrogen">Nitrogen:</label>
+                <input type="number" id="nitrogen" name="nitrogen" step="0.01" required><br><br>
+
+                <label for="phosphorus">Phosphorus:</label>
+                <input type="number" id="phosphorus" name="phosphorus" step="0.01" required min="0"><br><br>
+
+                <label for="potassium">Potassium:</label>
+                <input type="number" id="potassium" name="potassium" step="0.01" required min="0"><br><br>
+
+                <label for="temperature">Temperature (°C):</label>
+                <input type="number" id="temperature" name="temperature" step="0.1" required max="100" min="0"><br><br>
+
+                <label for="humidity">Humidity (%):</label>
+                <input type="number" id="humidity" name="humidity" step="0.01" required max="100" min="0"><br><br>
+
+                <label for="ph">pH:</label>
+                <input type="number" id="ph" name="ph" step="0.01" required max="20" min="0"><br><br>
+
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" step="0.01" required min="0"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

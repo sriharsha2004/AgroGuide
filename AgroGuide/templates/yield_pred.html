@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input Form</title>
+    <link rel="stylesheet" href="../static/yield_pred.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="#"><img src="../static/images/plant-pot-with-blurred-background_534373-1490.avif" alt="Plant Pot" height="50" > &nbsp;&nbsp;&nbsp; AgroGuide </a>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/yield_pred">Predict Yield</a></li>
+                <li><a href="/recommend">Crop Recommender</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="form-container">
+        <div class="form-content">
+            <h1>Crop yield Prediction System</h1>
+            <br>
+                {% if prediction %}
+                <!-- <h1 class="text-center"> Predicted Yield: <br>{{prediction}}</h1> -->
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none'">
+                        &times;
+                    </span> 
+                    <h1 class="text-center"> Predicted Yield: <br>{{prediction}}</h1>
+                </div>
+            {% endif %}
+             <br>
+            <form action="/predict_crop" method="post">
+                <label for="year">Year (YYYY):</label>
+                <input type="number" id="year" name="year" required min="1900" max="2099" step="1"><br><br>
+
+                <label for="average_rain_fall_mm_per_year">Average Rainfall (mm per year):</label>
+                <input type="number" id="average_rain_fall_mm_per_year" name="average_rain_fall_mm_per_year" required><br><br>
+
+                <label for="pesticides_tonnes">Pesticides (tonnes):</label>
+                <input type="number" id="pesticides_tonnes" name="pesticides_tonnes" required><br><br>
+
+                <label for="avg_temp">Average Temperature (°C):</label>
+                <input type="number" step="0.1" id="avg_temp" name="avg_temp" required><br><br>
+
+                <label for="area">Area:</label>
+                <select id="area" name="area" required>
+                </select><br><br>
+
+                <label for="item">Item:</label>
+                <select id="item" name="item" required>
+                    <option value="Maize">Maize</option>
+                    <option value="Potatoes">Potatoes</option>
+                    <option value="Rice, paddy">Rice</option>
+                    <option value="Sorghum">Sorghum</option>
+                    <option value="Soybeans">Soybeans</option>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Cassava">Cassava</option>
+                    <option value="Sweet potatoes">Sweet potatoes</option>
+                    <option value="Yams">Yams</option>
+                    <option value="Plantains and others">Plantains and others</option>
+                </select><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+       </div>
+    </div>
+    <script>
+        const areaSelect = document.getElementById('area');
+        const areas = [
+            'Albania', 'Algeria', 'Angola', 'Argentina', 'Armenia', 'Australia',
+            'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Belarus',
+            'Belgium', 'Botswana', 'Brazil', 'Bulgaria', 'Burkina Faso', 'Burundi',
+            'Cameroon', 'Canada', 'Central African Republic', 'Chile', 'Colombia',
+            'Croatia', 'Denmark', 'Dominican Republic', 'Ecuador', 'Egypt',
+            'El Salvador', 'Eritrea', 'Estonia', 'Finland', 'France', 'Germany',
+            'Ghana', 'Greece', 'Guatemala', 'Guinea', 'Guyana', 'Haiti', 'Honduras',
+            'Hungary', 'India', 'Indonesia', 'Iraq', 'Ireland', 'Italy', 'Jamaica',
+            'Japan', 'Kazakhstan', 'Kenya', 'Latvia', 'Lebanon', 'Lesotho', 'Libya',
+            'Lithuania', 'Madagascar', 'Malawi', 'Malaysia', 'Mali', 'Mauritania',
+            'Mauritius', 'Mexico', 'Montenegro', 'Morocco', 'Mozambique', 'Namibia',
+            'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Norway',
+            'Pakistan', 'Papua New Guinea', 'Peru', 'Poland', 'Portugal', 'Qatar',
+            'Romania', 'Rwanda', 'Saudi Arabia', 'Senegal', 'Slovenia', 'South Africa',
+            'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Tajikistan', 'Thailand', 'Tunisia', 'Turkey', 'Uganda', 'Ukraine',
+            'United Kingdom', 'Uruguay', 'Zambia', 'Zimbabwe'
+        ];
+
+        areas.forEach(area => {
+            const option = document.createElement('option');
+            option.textContent = area;
+            option.value = area;
+            areaSelect.appendChild(option);
+        });
+    </script>
+</body>
+</html>
