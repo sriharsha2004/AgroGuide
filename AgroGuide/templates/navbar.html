@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input Form</title>
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="#"><img src="../static/images/plant-pot-with-blurred-background_534373-1490.avif" alt="Plant Pot" height="50" > &nbsp;&nbsp;&nbsp; AgroGuide </a>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/yield_pred">Predict Yield</a></li>
+                <li><a href="/recommend">Crop Recommender</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

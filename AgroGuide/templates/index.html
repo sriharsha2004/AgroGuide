@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
+{% extends "navbar.html" %}
+{% block style %}
     <link rel="stylesheet" href="../static/index.css">
-</head>
-<body>
-    <nav>
-        <div class="nav-left">
-            <a href="#"><img src="../static/images/plant-pot-with-blurred-background_534373-1490.avif" alt="Plant Pot" height="50" > &nbsp;&nbsp;&nbsp; AgroGuide </a>
-        </div>
-        <div class="nav-center">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/yield_pred">Predict Yield</a></li>
-                <li><a href="/recommend">Crop Recommender</a></li>
-            </ul>
-        </div>
-    </nav>
+{% endblock %}
+{% block content %}
     <main>
         <h1>AgriGuide : "A compass to navigate the journey from soil to harvest."</h1>
         <p style="color: black;">Welcome to AgriGuide, an innovative crop yield system designed to empower farmers with data-driven insights and recommendations. Our system not only predicts crop yields with high accuracy but also suggests the best crops to plant based on soil characteristics, rainfall patterns, and other environmental factors. With AgriGuide, farmers can make informed decisions to maximize their productivity and promote sustainable agriculture.</p>
@@ -52,5 +36,4 @@
         </div>
 
       </main>
-</body>
-</html>
+{% endblock %}
